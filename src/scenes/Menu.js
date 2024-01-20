@@ -7,10 +7,17 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfx_select', './assets/blip_select12.wav');
         this.load.audio('sfx_explosion', './assets/explosion38.wav');
         this.load.audio('sfx_rocket', './assets/rocket_shot.wav');
+        this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth:64, frameHeight: 32,
+          startFrame: 0, endFrame: 9});
     }
     create(){
-        //this.add.text(20,20, "Rocket Patrol Menu");
-        //this.scene.start("playScene");
+      //animation config
+      this.anims.create({
+        key: 'explode',
+        frames: this.anims.generateFrameNumbers('explosion', {start: 0, end: 9, first: 0}),
+        frameRate: 30
+      });
+
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
